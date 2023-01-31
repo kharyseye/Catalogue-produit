@@ -46,7 +46,7 @@ public class ProduitdaoImpl implements IProduitdao {
 		Connection connection = SingletonConnection.getConnection();
 		try {
 			PreparedStatement ps = connection.prepareStatement
-					("SELECT * FROM PRODUIT WHERE DESIGNATION LIKE ?");
+					("SELECT * FROM produit WHERE designation LIKE ?");
 			ps.setString(1, mc);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -67,20 +67,66 @@ public class ProduitdaoImpl implements IProduitdao {
 
 	@Override
 	public Produit getProduit(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Produit p = null;
+		Connection connection = SingletonConnection.getConnection();
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement
+					("SELECT * FROM produit WHERE id=?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				p = new Produit();
+				p.setId(rs.getInt("id"));
+				p.setDesignation(rs.getString("designation"));
+				p.setPrix(rs.getDouble("prix"));
+				p.setQuantite(rs.getInt("quantite"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return p;
 	}
 
 	@Override
 	public Produit update(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = SingletonConnection.getConnection();
+		try {
+			PreparedStatement ps = connection.prepareStatement
+					("UPDATE PRODUIT SET DESIGNATION=?,PRIX=?,QUANTITE=? WHERE ID=?");
+			ps.setString(1, p.getDesignation());
+			ps.setDouble(2, p.getPrix());
+			ps.setInt(3, p.getQuantite());
+			ps.setInt(4, p.getId());
+			ps.executeUpdate();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return p;
 	}
 
 	@Override
-	public Produit delete(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void delete(int id) {
+		Connection connection = SingletonConnection.getConnection();
+		try {
+			PreparedStatement ps = connection.prepareStatement
+					("DELETE FROM produit WHERE id=?");
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		
 	}
 
 }

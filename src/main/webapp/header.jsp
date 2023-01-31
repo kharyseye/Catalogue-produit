@@ -1,9 +1,3 @@
-<!-- <div class="navbar navbar-default"></div>
-<ul class="nav navbar-nav">
-	<li><a href="index.php">Acceuil</a></li>
-	<li><a href="saisie.php">Ajouter</a></li>
-</ul> -->
-
 <nav class="navbar navbar-expand-sm bg-light ">
 
   <div class="container-fluid">

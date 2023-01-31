@@ -9,6 +9,6 @@ public interface IProduitdao {
 	public List<Produit> produitParmc(String mc);
 	public Produit getProduit(int id);
 	public Produit update(Produit p);
-	public Produit delete(int id);
+	public void  delete(int id);
 
 }
