@@ -42,6 +42,7 @@ public class ProduitdaoImpl implements IProduitdao {
 
 	@Override
 	public List<Produit> produitParmc(String mc) {
+		
 		List<Produit> produit = new ArrayList<Produit>();
 		Connection connection = SingletonConnection.getConnection();
 		try {
