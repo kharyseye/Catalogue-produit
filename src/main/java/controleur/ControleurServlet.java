@@ -80,7 +80,7 @@ public class ControleurServlet extends HttpServlet {
 			
 		}
 		else {
-			resp.sendError(org.apache.catalina.connector.Response.SC_NOT_FOUND);
+			
 		}
 	}
 	
