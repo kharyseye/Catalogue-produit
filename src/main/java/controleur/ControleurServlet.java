@@ -52,7 +52,6 @@ public class ControleurServlet extends HttpServlet {
 			int quantite = Integer.parseInt(req.getParameter("quantite"));
 			Produit p = metier.add(new Produit(designation, prix, quantite));
 			req.setAttribute("produit", p);
-			
 			req.getRequestDispatcher("confirmationajout.jsp").forward(req, resp);
 			
 		}else if(path.equals("/supprimer.php")){
@@ -75,11 +74,7 @@ public class ControleurServlet extends HttpServlet {
 			p.setId(id);
 			metier.update(p);
 			req.setAttribute("produit", p);
-			
 			req.getRequestDispatcher("confirmationajout.jsp").forward(req, resp);
-			
-		}
-		else {
 			
 		}
 	}
